@@ -1,0 +1,26 @@
+application: lunch--mates--endpoints
+version: 1
+runtime: python27
+threadsafe: yes
+api_version: 1
+
+handlers:
+
+# Task queues & scheduled tasks
+- url: /tasks/.*
+  script: main.tasks
+  login: admin
+
+# Endpoints handler
+- url: /_ah/spi/.*
+  script: main.app
+
+libraries:
+- name: webapp2
+  version: "2.5.1"
+
+# Endpoints libs
+- name: pycrypto
+  version: "2.6"
+- name: endpoints
+  version: 1.0
