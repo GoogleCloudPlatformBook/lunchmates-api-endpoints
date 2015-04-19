@@ -97,8 +97,13 @@ class MeetingRequest(BaseModel):
     state = ndb.StringProperty(default='pending', choices=['pending', 'accepted', 'rejected'])
 
     def ParentMeetingSet(self, value):
+
         meeting_key = ndb.Key(Meeting, int(value))
+
+        # Assign key to meeting. Scenario: new entity
         self.meeting = meeting_key
+
+        # Add the key to the query info. Scenarion: fetch entities for a given meeting           
         self._endpoints_query_info.meeting = meeting_key
 
     @EndpointsAliasProperty(required=True, setter=ParentMeetingSet, property_type=messages.IntegerField)
