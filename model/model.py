@@ -20,10 +20,6 @@ DATE_FORMAT_STR = '%Y-%m-%dT%H:%MZ'
 class BaseModel(EndpointsModel):
     created = ndb.DateTimeProperty(auto_now_add=True)
 
-    @EndpointsAliasProperty(property_type=messages.IntegerField)
-    def id(self):
-        return self.key.id()
-
     def __hash__(self):
         return self.key.id()
 
@@ -65,7 +61,7 @@ class Meeting(BaseModel):
 
     _message_fields_schema = ('created','id','owner_id','venue_forsquare_id','location','earliest_possible_start','latest_possible_start','topic','type','tags')
 
-    owner = ndb.KeyProperty(kind=UserData)
+    owner = ndb.KeyProperty(kind=UserData, required=True)
     venue_forsquare_id = ndb.StringProperty(required=True)
     location = ndb.GeoPtProperty()
     earliest_possible_start = EndpointsDateTimeProperty(required=True, string_format=DATE_FORMAT_STR)
