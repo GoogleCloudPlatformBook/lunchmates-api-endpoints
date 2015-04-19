@@ -2,3 +2,5 @@
 appengine-generated/
 *.pyc
 lunch--mates
+*.discovery
+lunchmates-v1.zip
