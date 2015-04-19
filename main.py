@@ -1,5 +1,3 @@
-# If you have not yet seen the source in basic/main.py, please take a look.
-
 import config
 
 # Endpoints
@@ -12,6 +10,8 @@ from webapp2_extras import routes
 from webapp2_extras.routes import DomainRoute
 
 # Controllers
+from controllers import base
+
 from controllers import meetings
 from controllers import meeting_requests
 from controllers import users
@@ -22,10 +22,7 @@ from tasks.emails import *
 from tasks.requests import *
 
 # Endpoints API
-app = endpoints.api_server([meetings.Meetings,
-                            meeting_requests.MeetingRequests,
-                            users.Users,
-                            auth.Auth], restricted=False)
+app = endpoints.api_server([base.lunchmates_api], restricted=False)
 
 # Tasks App Engine API
 TASK_ROUTES = [
