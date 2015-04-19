@@ -8,7 +8,7 @@ from base import authenticated_user_data
 
 from model.model import Meeting
 
-@lunchmates_api.api_class(resource_name='meeting', path="meetings")
+@lunchmates_api.api_class(resource_name='meeting', path='meetings')
 class Meetings(remote.Service):
 
     @Meeting.query_method(query_fields=('limit', 'order', 'pageToken'), name='meeting.list')
