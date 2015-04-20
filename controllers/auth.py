@@ -16,7 +16,7 @@ USER_EXISTS = 'user_already_exists'
 @lunchmates_api.api_class(resource_name='auth')
 class Auth(remote.Service):
 
-	@UserData.method(request_fields=(), path='authenticate', http_method='POST', user_required=True, name='user.authenticate')
+	@UserData.method(request_fields=(), path='authenticate', user_required=True, name='user.authenticate')
 	def authenticate(self, user):
 
 		user_data = authenticated_user_data()

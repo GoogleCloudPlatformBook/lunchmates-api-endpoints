@@ -16,7 +16,7 @@ class MeetingRequests(remote.Service):
     def list(self, query):
         return query.order(-MeetingRequest.created)
 
-    @MeetingRequest.method(request_fields=('meeting_id',), path='{meeting_id}/join', http_method='POST', user_required=True, name='meeting_request.create')
+    @MeetingRequest.method(path='{meeting_id}/join', user_required=True, name='meeting_request.create')
     def create(self, meeting_request):
 
         meeting_request.parent = authenticated_user_data().key

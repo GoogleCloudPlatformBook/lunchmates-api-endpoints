@@ -14,7 +14,7 @@ class Meetings(remote.Service):
     def list(self, query):
         return query
 
-    @Meeting.method(http_method='POST', path='meetings', name='meeting.create', user_required=True)
+    @Meeting.method(path='meetings', name='meeting.create', user_required=True)
     def create(self, meeting):
 
         meeting.owner = authenticated_user_data().key
