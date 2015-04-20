@@ -3,7 +3,6 @@
 from protorpc import remote
 
 from base import lunchmates_api
-from base import check_user
 from base import authenticated_user_data
 
 from model.model import Meeting
@@ -11,14 +10,12 @@ from model.model import Meeting
 @lunchmates_api.api_class(resource_name='meeting')
 class Meetings(remote.Service):
 
-    @Meeting.query_method(query_fields=('limit', 'order', 'pageToken'), name='meeting.list', path='meetings')
+    @Meeting.query_method(query_fields=('limit', 'order', 'pageToken'), path='meetings', user_required=True, name='meeting.list')
     def list(self, query):
-        check_user()
         return query
 
-    @Meeting.method(http_method='POST', name='meeting.create', path='meetings')
+    @Meeting.method(http_method='POST', path='meetings', name='meeting.create', user_required=True)
     def create(self, meeting):
-        check_user()
 
         meeting.owner = authenticated_user_data().key
         meeting.put()
