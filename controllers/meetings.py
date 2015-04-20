@@ -8,15 +8,15 @@ from base import authenticated_user_data
 
 from model.model import Meeting
 
-@lunchmates_api.api_class(resource_name='meeting', path='meetings')
+@lunchmates_api.api_class(resource_name='meeting')
 class Meetings(remote.Service):
 
-    @Meeting.query_method(query_fields=('limit', 'order', 'pageToken'), name='meeting.list')
+    @Meeting.query_method(query_fields=('limit', 'order', 'pageToken'), name='meeting.list', path='meetings')
     def list(self, query):
         check_user()
         return query
 
-    @Meeting.method(http_method='POST', name='meeting.create')
+    @Meeting.method(http_method='POST', name='meeting.create', path='meetings')
     def create(self, meeting):
         check_user()
 
