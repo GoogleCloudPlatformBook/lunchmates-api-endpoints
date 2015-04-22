@@ -5,9 +5,9 @@ import endpoints
 from model.model import UserData
 
 # Client IDs
-WEBAPP_CLIENT_ID = '1034740665071-bb97182bfolv75ta7rahan0o0i9aoo09.apps.googleusercontent.com'
-IOS_CLIENT_ID = '1034740665071-3m8fbvau4uba692q82ktpo7qqv28cr9n.apps.googleusercontent.com'
-ANDROID_CLIENT_ID = '1034740665071-3avud6mj5aebprs04scmqkufqjdugn5u.apps.googleusercontent.com'
+WEBAPP_CLIENT_ID = '99886669718-6q66jlok7oej4bbgfn1nhu5g5gdgak4n.apps.googleusercontent.com'
+IOS_CLIENT_ID = '99886669718-gf6eup115gtto53puflik7gpqgcfk9cr.apps.googleusercontent.com'
+ANDROID_CLIENT_ID = '99886669718-u0hob6t430emce4mtsajc9lma04hhdu1.apps.googleusercontent.com'
 ANDROID_AUDIENCE = WEBAPP_CLIENT_ID
 
 lunchmates_api = endpoints.api(name='lunchmates', version='v1', 
@@ -23,6 +23,6 @@ def authenticated_user_data():
 
 	current_user_data = UserData.query(UserData.auth_user == endpoints.get_current_user()).get()
 	if current_user_data is None:
-		raise endpoints.UnauthorizedException(NOT_AUTHORIZED)
+		raise endpoints.UnauthorizedException()
 
 	return current_user_data
