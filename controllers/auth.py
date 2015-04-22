@@ -19,9 +19,10 @@ class Auth(remote.Service):
 	@UserData.method(request_fields=(), path='authenticate', user_required=True, name='users.authenticate')
 	def authenticate(self, user):
 
-		user_data = authenticated_user_data()
-		if user_data is None:
-			return UserData.create_user(endpoints.get_current_user(), model.PROVIDER_GOOGLE)
-
-		else:
+		try:
+			authenticated_user_data()
 			raise endpoints.ForbiddenException(USER_EXISTS)
+
+		except endpoints.UnauthorizedException:
+			return UserData.create_user(endpoints.get_current_user(), model.PROVIDER_GOOGLE)
+			
