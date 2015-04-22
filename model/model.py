@@ -103,7 +103,7 @@ class MeetingRequest(BaseModel):
         # Assign key to meeting. Scenario: new entity
         self.meeting = meeting_key
 
-        # Add the key to the query info. Scenarion: fetch entities for a given meeting           
+        # Add the key to the query info. Scenario: fetch entities for a given meeting           
         self._endpoints_query_info.meeting = meeting_key
 
     @EndpointsAliasProperty(required=True, setter=ParentMeetingSet, property_type=messages.IntegerField)
