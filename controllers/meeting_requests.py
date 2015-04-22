@@ -12,11 +12,11 @@ from google.appengine.api import taskqueue
 @lunchmates_api.api_class(resource_name='meeting_request', path="meetings")
 class MeetingRequests(remote.Service):
 
-    @MeetingRequest.query_method(query_fields=('meeting_id',), path='{meeting_id}/requests', user_required=True, name='meeting_request.list')
+    @MeetingRequest.query_method(query_fields=('meeting_id',), path='{meeting_id}/requests', user_required=True, name='meeting_requests.list')
     def list(self, query):
         return query.order(-MeetingRequest.created)
 
-    @MeetingRequest.method(path='{meeting_id}/join', user_required=True, name='meeting_request.create')
+    @MeetingRequest.method(path='{meeting_id}/join', user_required=True, name='meeting_requests.create')
     def create(self, meeting_request):
 
         meeting_request.parent = authenticated_user_data().key
