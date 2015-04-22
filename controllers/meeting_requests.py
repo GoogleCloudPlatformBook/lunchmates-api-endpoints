@@ -9,7 +9,7 @@ from base import authenticated_user_data
 from model.model import MeetingRequest
 from google.appengine.api import taskqueue
 
-@lunchmates_api.api_class(resource_name='meeting_request', path="meetings")
+@lunchmates_api.api_class(resource_name='meeting_request', path='meetings')
 class MeetingRequests(remote.Service):
 
     @MeetingRequest.query_method(query_fields=('meeting_id',), path='{meeting_id}/requests', user_required=True, name='meeting_requests.list')
