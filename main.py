@@ -26,7 +26,7 @@ app = endpoints.api_server([base.lunchmates_api], restricted=False)
 
 # Tasks App Engine API
 TASK_ROUTES = [
-    DomainRoute(config.subdomain, [ # Allowed domains
+    DomainRoute(config.subdomain, [  # Allowed domains
 
         routes.PathPrefixRoute(r'/tasks', [
 
@@ -38,4 +38,5 @@ TASK_ROUTES = [
         ])
     ])
 ]
+
 tasks = webapp2.WSGIApplication(TASK_ROUTES, debug=True)

@@ -1,4 +1,3 @@
-application: lunch--mates--endpoints
 version: 1
 runtime: python27
 threadsafe: yes

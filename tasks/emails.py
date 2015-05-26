@@ -5,6 +5,7 @@ from google.appengine.api import mail
 
 from model.model import UserData
 
+
 class EmailTaskHandler(webapp2.RequestHandler):
 
     def post(self):
